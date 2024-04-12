@@ -1,0 +1,27 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+WINDOW_HEIGHT	src/main.c	/^int WINDOW_HEIGHT = 600;$/;"	v
+WINDOW_WIDTH	src/main.c	/^int WINDOW_WIDTH = 800;$/;"	v
+clear_color_buffer	src/main.c	/^void clear_color_buffer(uint32_t color)$/;"	f
+color_buffer	src/main.c	/^uint32_t *color_buffer = NULL;$/;"	v
+color_buffer_texture	src/main.c	/^SDL_Texture *color_buffer_texture = NULL;$/;"	v
+destroy_window	src/main.c	/^void destroy_window()$/;"	f
+draw_grid	src/main.c	/^void draw_grid(int offset)$/;"	f
+draw_rectangle	src/main.c	/^void draw_rectangle(int x, int y, int width, int height, uint32_t color)$/;"	f
+draw_rectangle_with_delta	src/main.c	/^void draw_rectangle_with_delta(int x, int y, int width, int height, uint32_t color)$/;"	f
+initialize_window	src/main.c	/^bool initialize_window()$/;"	f
+is_running	src/main.c	/^bool is_running = false;$/;"	v
+main	src/main.c	/^int main(int argc, char **argv)$/;"	f
+process_input	src/main.c	/^void process_input()$/;"	f
+render	src/main.c	/^void render()$/;"	f
+render_color_buffer	src/main.c	/^void render_color_buffer()$/;"	f
+renderer	src/main.c	/^SDL_Renderer *renderer = NULL;$/;"	v
+setup	src/main.c	/^void setup()$/;"	f
+update	src/main.c	/^void update()$/;"	f
+window	src/main.c	/^SDL_Window *window = NULL;$/;"	v
+x_increment	src/main.c	/^int x_increment = 0;$/;"	v
+y_increment	src/main.c	/^int y_increment = 0;$/;"	v

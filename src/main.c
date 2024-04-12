@@ -1,15 +1,11 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <SDL2/SDL.h>
-SDL_Window *window = NULL;
-SDL_Renderer *renderer = NULL;
+#include "display.h"
+#include "vector.h"
 bool is_running = false;
-bool initialize_window(void);
-void process_input(void);
-void update(void);
-void render(void);
 void setup(void);
-int main()
+void process_input(void);
+void render(void);
+void update(void);
+int main(int argc, char **argv)
 {
     is_running = initialize_window();
     setup();
@@ -19,36 +15,7 @@ int main()
         update();
         render();
     }
-    return 0;
-}
-
-bool initialize_window()
-{
-    if (SDL_Init(SDL_INIT_EVERYTHING) != 0)
-    {
-        fprintf(stderr, "Error Initializing SDL.\n");
-        return false;
-    }
-    window = SDL_CreateWindow(NULL,
-                              SDL_WINDOWPOS_CENTERED,
-                              SDL_WINDOWPOS_CENTERED,
-                              800,
-                              600,
-                              SDL_WINDOW_BORDERLESS);
-    if (!window)
-    {
-        fprintf(stderr, "Error creating SDL Window\n");
-        return false;
-    }
-    renderer = SDL_CreateRenderer(window,
-                                  -1,
-                                  0);
-    if (!renderer)
-    {
-        fprintf(stderr, "Error creating SDL Renderer\n");
-        return false;
-    }
-    return true;
+    destroy_window();
 }
 
 void process_input()
@@ -62,13 +29,35 @@ void process_input()
         break;
     case SDL_KEYDOWN:
         if (event.key.keysym.sym == SDLK_ESCAPE)
+        {
             is_running = false;
+        }
+        else if (event.key.keysym.sym == SDLK_UP)
+        {
+            y_increment -= 10;
+        }
+        else if (event.key.keysym.sym == SDLK_DOWN)
+        {
+            y_increment += 10;
+        }
+        else if (event.key.keysym.sym == SDLK_LEFT)
+        {
+            x_increment -= 10;
+        }
+        else if (event.key.keysym.sym == SDLK_RIGHT)
+        {
+            x_increment += 10;
+        }
+        else
+            fprintf(stderr, "%c Pressed\n", event.key.keysym.sym);
         break;
     }
 }
 
 void setup()
 {
+    color_buffer = (uint32_t *)malloc(sizeof(uint32_t) * WINDOW_WIDTH * WINDOW_HEIGHT);
+    color_buffer_texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, WINDOW_WIDTH, WINDOW_HEIGHT);
 }
 
 void update()
@@ -79,5 +68,9 @@ void render()
 {
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
     SDL_RenderClear(renderer);
+    // draw_rectangle_with_delta(130, 70, 100, 100, RED);
+    draw_pixel(20, 20, RED);
+    render_color_buffer();
+    clear_color_buffer(RED & 0);
     SDL_RenderPresent(renderer);
 }
