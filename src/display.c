@@ -15,10 +15,10 @@ bool initialize_window()
         fprintf(stderr, "Error Initializing SDL.\n");
         return false;
     }
-    // SDL_DisplayMode display_mode;
-    // SDL_GetCurrentDisplayMode(0, &display_mode);
-    // WINDOW_HEIGHT = display_mode.h;
-    // WINDOW_WIDTH = display_mode.w;
+    SDL_DisplayMode display_mode;
+    SDL_GetCurrentDisplayMode(0, &display_mode);
+    WINDOW_HEIGHT = display_mode.h;
+    WINDOW_WIDTH = display_mode.w;
     window = SDL_CreateWindow(NULL,
                               SDL_WINDOWPOS_CENTERED,
                               SDL_WINDOWPOS_CENTERED,
@@ -38,7 +38,7 @@ bool initialize_window()
         fprintf(stderr, "Error creating SDL Renderer\n");
         return false;
     }
-    // SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+    SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
     return true;
 }
 

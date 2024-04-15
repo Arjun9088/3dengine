@@ -112,20 +112,18 @@ void update()
 
 void render()
 {
-    // draw_grid(10);
-    // for (int i = 0; i < N_POINTS; i++)
-    // {
-    //     vec2_t projected_point = projected_points[i];
-    //     draw_rectangle(
-    //         projected_point.x + (WINDOW_WIDTH / 2),
-    //         projected_point.y + (WINDOW_HEIGHT / 2),
-    //         4,
-    //         4,
-    //         BLUE);
-    // }
-    draw_rectangle(line_endpoints[1].x, line_endpoints[1].y, 7, 7, BLUE);
-    draw_line_dda(line_endpoints[0], line_endpoints[1], WHITE);
+    draw_grid(10);
+    for (int i = 0; i < N_POINTS; i++)
+    {
+        vec2_t projected_point = projected_points[i];
+        draw_rectangle(
+            projected_point.x + (WINDOW_WIDTH / 2),
+            projected_point.y + (WINDOW_HEIGHT / 2),
+            4,
+            4,
+            BLUE);
+    }
     render_color_buffer();
-    // clear_color_buffer(0xFF000000);
+    clear_color_buffer(0xFF000000);
     SDL_RenderPresent(renderer);
 }
