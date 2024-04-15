@@ -5,7 +5,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <SDL2/SDL.h>
-
+#include "vector.h"
+#define ROUND(a) ((int)(a + 0.5))
 extern int WINDOW_WIDTH;
 extern int WINDOW_HEIGHT;
 extern int x_increment;
@@ -31,5 +32,8 @@ void destroy_window(void);
 void clear_color_buffer(uint32_t);
 void render_color_buffer(void);
 void draw_pixel(int x, int y, uint32_t color);
+vec2_t project(vec3_t point);
+void draw_line_bresenham(vec2_t src, vec2_t destination, uint32_t color);
+void draw_line_dda(vec2_t src, vec2_t destination, uint32_t color);
 
 #endif
